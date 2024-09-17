@@ -51,11 +51,13 @@ button {
     color: var(--navy);
     background-color: var(--yellow);
     background-image: linear-gradient(var(--light-yellow), var(--orange));
-    border: 1px solid var(--yellow);
+    border: 2px solid var(--yellow);
     padding: 0.3rem;
     margin-right: 0.3rem;
     border-radius: 3px;
     font-size: 1rem;
+    font-family: 'Dosis', sans-serif;
+    font-weight: bold;
 }
 
 .stat {
