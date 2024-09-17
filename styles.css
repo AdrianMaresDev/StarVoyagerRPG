@@ -1,3 +1,11 @@
+:root {
+    --navy: #20073A;
+    --purple: #4D2B78;
+    --orange: #BD4545;
+    --yellow: #D48849;
+    --light-yellow: #F0D171;
+}
+
 *{
     box-sizing: border-box;
     margin: 0;
@@ -7,4 +15,59 @@
 body{
     font-size: 16px;
     line-height: 1.5;
+    font-family: 'Dosis', sans-serif;
+    background-color: var(--navy);
+    color: #fff;
+    font-size: 1.1rem;
+}
+
+#game {
+    margin: 10rem auto;
+    max-width: 70%;
+    padding: 2rem;
+    background-color: var(--purple);
+    border-radius: 5px;
+}
+
+h1 {
+    font-size: 1.5rem;
+}
+
+.accent {
+    font-style: italic;
+}
+
+#stats, #buttons {
+    padding: 0.5rem;
+    border: 2px solid var(--light-yellow);
+}
+
+#stats {
+    border-radius: 3px 3px 0 0;
+}
+
+button {
+    cursor: pointer;
+    color: var(--navy);
+    background-color: var(--yellow);
+    background-image: linear-gradient(var(--light-yellow), var(--orange));
+    border: 1px solid var(--yellow);
+    padding: 0.3rem;
+    border-radius: 3px;
+    font-size: 1rem;
+}
+
+.stat {
+    margin-right: 1rem;
+}
+
+#energyText, #goldText, #xpText {
+    font-weight: bold;
+}
+
+#description {
+    background-color: var(--navy);
+    border: 2px solid var(--light-yellow);
+    border-radius: 0 0 3px 3px;
+    padding: 1rem;
 }
