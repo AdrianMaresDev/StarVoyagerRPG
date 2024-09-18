@@ -36,7 +36,7 @@ const planets = [
         hasGemstone: 0,
         energyCost: 10,
         xpRequirement: 0,
-        description: "You come across a barren planet covered in red dust. It seems empty here and the atmosphere is oddly still. What would you like to do?",
+        description: "You come across a barren planet covered in rust-colored rocks and dust. It's incredibly quiet here and the atmosphere is oddly still. What would you like to do?",
     },
     {
         name: "Planet Beta",
@@ -46,7 +46,7 @@ const planets = [
         hasGemstone: 0,
         energyCost: 10,
         xpRequirement: 0,
-        description: "You come across a blue planet that vaguely resembles your home, Earth. There's no water, but an unknown liquid seeps into the dirt. What would you like to do?",
+        description: "You come across a blue planet that vaguely resembles your home, Earth. There's no water here, but an unknown liquid seeps into the dirt. What would you like to do?",
     }
 ]
 

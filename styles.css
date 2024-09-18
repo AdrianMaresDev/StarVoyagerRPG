@@ -74,3 +74,16 @@ button {
     border-radius: 0 0 3px 3px;
     padding: 1rem;
 }
+
+/*MEDIA QUERIES*/
+
+@media (max-width: 768px) {
+    #buttons, #stats {
+        display: flex;
+        flex-direction: column;
+    }
+
+    button {
+        margin-bottom: 0.5rem;
+    }
+}
