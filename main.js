@@ -13,22 +13,29 @@ const energyText = document.getElementById("energyText");
 const goldText = document.getElementById("goldText");
 const xpText = document.getElementById("xpText");
 
-const buttons = [
+const locations = [
     {
-        name: "Explore Planets",
-        btnText: []
+        name: "Spaceship",
+        gold: 0,
+        metal: 0,
+        xpReward: 0,
+        hasGemstone: 0,
+        energyCost: 0,
+        xpRequirement: 0,
+        buttonText: ["Explore Planets", "Upgrade Spaceship", "Visit Spaceport"],
+        buttonFunction: [goPlanets, upgradeShip, goSpaceport],
+        description: "You have returned to your spaceship. What would you like to do?"
     }, {
-        name: "Upgrade Spaceship",
+        name: "Spaceport",
+        gold: 0,
+        xpReward: 0,
+        hasGemstone: 0,
+        energyCost: 0,
+        xpRequirement: 0,
+        buttonText: ["Buy Upgrades", "Check Ship Status", "Return"],
+        buttonFunction: [buyUpgrade, checkShipStatus, returnShip],
+        description: "You have entered the spaceport. Here, you can use the materials you've found to upgrade your spaceship. You can find these materials by exploring planets. What would you like to do?"
     }, {
-        name: "Visit Spaceport",
-    }
-]
-
-//Create objects for Planets (name, gold, xp reward, xp req, metal, energy cost, description)
-//Add button functions later
-
-const planets = [
-    {
         //initial planet set
         name: "Planet Alpha",
         gold: 30,
@@ -120,4 +127,27 @@ function updateStats() {
     energyText.innerText = `Energy: ${energy}`;
     goldText.innerText = `Gold: ${gold}`;
     xpText.innerText = `Energy: ${energy}`;
+}
+
+//Location Update and Initialize Buttons
+
+function update(locationIndex) {
+    const currentLocation = locations[locationIndex];
+
+    //Update Button Text
+    btn1.innerText = location[buttonText][0];
+    btn2.innerText = location[buttonText][1];
+    btn3.innerText = location[buttonText][2];
+
+    //Initialize
+    btn1.onclick = location[buttonFunction][0];
+    btn2.onclick = location[buttonFunction][1];
+    btn3.onclick = location[buttonFunction][2];
+
+    //Update Description
+    description.innerHTML = location.text;
+}
+
+function initialPlanets() {
+    
 }
