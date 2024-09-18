@@ -29,6 +29,7 @@ const buttons = [
 
 const planets = [
     {
+        //initial planet set
         name: "Planet Alpha",
         gold: 30,
         metal: 10,
@@ -36,17 +37,82 @@ const planets = [
         hasGemstone: 0,
         energyCost: 10,
         xpRequirement: 0,
-        description: "You come across a barren planet covered in rust-colored rocks and dust. It's incredibly quiet here and the atmosphere is oddly still. What would you like to do?",
-    },
-    {
+        description: "You come across a barren planet covered in rust-colored rocks and dust. It's incredibly quiet here and the atmosphere is oddly still. What would you like to do?"
+    }, {
         name: "Planet Beta",
-        gold: 50,
+        gold: 40,
         metal: 30,
         xpReward: 30,
         hasGemstone: 0,
         energyCost: 10,
         xpRequirement: 0,
-        description: "You come across a blue planet that vaguely resembles your home, Earth. There's no water here, but an unknown liquid seeps into the dirt. What would you like to do?",
+        description: "You come across a blue planet that vaguely resembles your home, Earth. There's no water here, but an unknown liquid seeps into the dirt. What would you like to do?"
+    }, {
+        name: "Planet Gamma",
+        gold: 50,
+        metal: 20,
+        xpReward: 40,
+        hasGemstone: 0,
+        energyCost: 10,
+        xpRequirement: 0,
+        description: "You come across a planet covered in glistening ice. The snow-capped mountains looming in the distance are breathtaking, but too dangerous to navigate. What would you like to do?"
+    }, {
+        //second set
+        name: "Planet Delta",
+        gold: 40,
+        metal: 25,
+        xpReward: 40,
+        hasGemstone: 3, //30% chance of gemstone appearing
+        energyCost: 30,
+        xpRequirement: 100,
+        description: "You come across a vibrant green planet, but the plant life isn't something you've ever seen before. You notice bioluminescent flora that lights up wherever you step. What would you like to do?"
+    }, {
+        //second set
+        name: "Planet Zeta",
+        gold: 80,
+        metal: 50,
+        xpReward: 50,
+        hasGemstone: 3,
+        energyCost: 30,
+        xpRequirement: 100,
+        description: "You come across a metallic planet gleaming from rare minerals. The surface is dotted with bits of gold shining through, reminiscent of the stars above. What would you like to do?"
+    }, {
+        name: "Planet Omega",
+        gold: 60,
+        metal: 20,
+        xpReward: 35,
+        hasGemstone: 3,
+        energyCost: 30,
+        xpRequirement: 100,
+        description: "You come across a planet containing the remnants of a civilization long gone. The ancient buildings are in ruin, making you wonder what happened here. What would you like to do?"
+    }, {
+        //final planet set - highest chance of gemstone
+        name: "Planet Lambda",
+        gold: 70,
+        metal: 15,
+        xpReward: 50,
+        hasGemstone: 5,
+        energyCost: 50,
+        xpRequirement: 200,
+        description: "You come across a planet veiled with a humid layer of fog. A thick mass of clouds swirls overhead, and it seems like a storm is coming soon. What would you like to do?"
+    }, {
+        name: "Planet Echo",
+        gold: 90,
+        metal: 40,
+        xpReward: 30,
+        hasGemstone: 5,
+        energyCost: 50,
+        xpRequirement: 200,
+        description: "You come across a planet burning with red lava seeping from a volcano in the distance. The air is heavy with ash and smoke. What would you like to do?"
+    }, {
+        name: "Planet Nova",
+        gold: 40,
+        metal: 60,
+        xpReward: 50,
+        hasGemstone: 5,
+        energyCost: 50,
+        xpRequirement: 200,
+        description: "You come across a lush planet filled with exotic creatures. The air is fragrant with blooming flowers and you see something watching you from within them. What would you like to do?"
     }
 ]
 
