@@ -1,5 +1,4 @@
 //Variables
-
 let xp = 0;
 let energy = 150;
 let gold = 100;
@@ -130,24 +129,43 @@ function updateStats() {
 }
 
 //Location Update and Initialize Buttons
+btn1.onclick = goPlanets;
+btn2.onclick = upgradeShip;
+btn3.onclick = goSpaceport;
 
 function update(locationIndex) {
     const currentLocation = locations[locationIndex];
 
     //Update Button Text
-    btn1.innerText = location[buttonText][0];
-    btn2.innerText = location[buttonText][1];
-    btn3.innerText = location[buttonText][2];
+    btn1.innerText = currentLocation[buttonText][0];
+    btn2.innerText = currentLocation[buttonText][1];
+    btn3.innerText = currentLocation[buttonText][2];
 
     //Initialize
-    btn1.onclick = location[buttonFunction][0];
-    btn2.onclick = location[buttonFunction][1];
-    btn3.onclick = location[buttonFunction][2];
+    btn1.onclick = currentLocation[buttonFunction][0];
+    btn2.onclick = currentLocation[buttonFunction][1];
+    btn3.onclick = currentLocation[buttonFunction][2];
 
     //Update Description
-    description.innerHTML = location.text;
+    description.innerHTML = currentLocation.description;
 }
 
-function initialPlanets() {
-    
+//Filter Planets Based on XP
+function isAvailable(planet) {
+    return planet.xpRequirement <= xp;
+}
+
+function goPlanets() {
+    let availablePlanets = locations.filter(isAvailable);
+    btn1.innerText = availablePlanets[0].name;
+    btn2.innerText = availablePlanets[2].name;
+    btn3.innerText = "Return";
+}
+
+function upgradeShip() {
+
+}
+
+function goSpaceport() {
+
 }
