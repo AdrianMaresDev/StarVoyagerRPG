@@ -12,6 +12,24 @@ const energyText = document.getElementById("energyText");
 const goldText = document.getElementById("goldText");
 const xpText = document.getElementById("xpText");
 
+//Initialize Buttons
+btn1.onclick = goPlanets;
+btn2.onclick = upgradeShip;
+btn3.onclick = goSpaceport;
+
+function goPlanets() {
+    console.log("Testing purposes");
+}
+
+function upgradeShip() {
+    console.log("Testing purposes 2");
+}
+
+function goSpaceport() {
+    console.log("Testing purposes 3")
+}
+
+//Objects
 const locations = [
     {
         name: "Spaceship",
@@ -128,11 +146,6 @@ function updateStats() {
     xpText.innerText = `Energy: ${energy}`;
 }
 
-//Location Update and Initialize Buttons
-btn1.onclick = goPlanets;
-btn2.onclick = upgradeShip;
-btn3.onclick = goSpaceport;
-
 function update(locationIndex) {
     const currentLocation = locations[locationIndex];
 
@@ -148,24 +161,4 @@ function update(locationIndex) {
 
     //Update Description
     description.innerHTML = currentLocation.description;
-}
-
-//Filter Planets Based on XP
-function isAvailable(planet) {
-    return planet.xpRequirement <= xp;
-}
-
-function goPlanets() {
-    let availablePlanets = locations.filter(isAvailable);
-    btn1.innerText = availablePlanets[0].name;
-    btn2.innerText = availablePlanets[2].name;
-    btn3.innerText = "Return";
-}
-
-function upgradeShip() {
-
-}
-
-function goSpaceport() {
-
 }
