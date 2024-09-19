@@ -17,18 +17,6 @@ btn1.onclick = goPlanets;
 btn2.onclick = upgradeShip;
 btn3.onclick = goSpaceport;
 
-function goPlanets() {
-    console.log("Testing purposes");
-}
-
-function upgradeShip() {
-    console.log("Testing purposes 2");
-}
-
-function goSpaceport() {
-    console.log("Testing purposes 3")
-}
-
 //Objects
 const locations = [
     {
@@ -139,6 +127,19 @@ const locations = [
         description: "You come across a lush planet filled with exotic creatures. The air is fragrant with blooming flowers and you see something watching you from within them. What would you like to do?"
     }
 ]
+
+function goPlanets() {
+    const currentLocation = locations[0];
+    btn1.innerText = currentLocation.buttonText[0];
+}
+
+function upgradeShip() {
+    console.log("Testing purposes 2");
+}
+
+function goSpaceport() {
+    console.log("Testing purposes 3")
+}
 
 function updateStats() {
     energyText.innerText = `Energy: ${energy}`;
