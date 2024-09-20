@@ -28,7 +28,7 @@ const locations = [
         energyCost: 0,
         xpRequirement: 0,
         buttonText: ["Explore Planets", "Upgrade Spaceship", "Visit Spaceport"],
-        buttonFunction: [goPlanets, upgradeShip, goSpaceport],
+        //buttonFunction: [goPlanets, upgradeShip, goSpaceport],
         description: "You have returned to your spaceship. What would you like to do?"
     }, {
         name: "Spaceport",
@@ -38,7 +38,7 @@ const locations = [
         energyCost: 0,
         xpRequirement: 0,
         buttonText: ["Buy Upgrades", "Check Ship Status", "Return"],
-        buttonFunction: [buyUpgrade, checkShipStatus, returnShip],
+        //buttonFunction: [buyUpgrade, checkShipStatus, returnShip],
         description: "You have entered the spaceport. Here, you can use the materials you've found to upgrade your spaceship. You can find these materials by exploring planets. What would you like to do?"
     }, {
         //initial planet set
@@ -129,12 +129,17 @@ const locations = [
 ]
 
 function goPlanets() {
-    const currentLocation = locations[0];
-    btn1.innerText = currentLocation.buttonText[0];
+    console.log("Hello World");
+    btn1.innerText = "Explore Planets";
+    btn2.innerText = "Upgrade Spaceship";
+    btn3.innerText = "Visit Spaceport";
 }
 
 function upgradeShip() {
-    console.log("Testing purposes 2");
+    console.log("Hello World");
+    btn1.innerText = "Testing Purposes";
+    btn2.innerText = "Testing Purposes";
+    btn3.innerText = "Testing Purposes";
 }
 
 function goSpaceport() {
@@ -147,19 +152,19 @@ function updateStats() {
     xpText.innerText = `Energy: ${energy}`;
 }
 
-function update(locationIndex) {
-    const currentLocation = locations[locationIndex];
+/*function update(location) {
+    //const currentLocation = locations[locationIndex];
 
     //Update Button Text
-    btn1.innerText = currentLocation[buttonText][0];
-    btn2.innerText = currentLocation[buttonText][1];
-    btn3.innerText = currentLocation[buttonText][2];
+    btn1.innerText = location[buttonText][0];
+    btn2.innerText = location[buttonText][1];
+    btn3.innerText = location[buttonText][2];
 
     //Initialize
-    btn1.onclick = currentLocation[buttonFunction][0];
-    btn2.onclick = currentLocation[buttonFunction][1];
-    btn3.onclick = currentLocation[buttonFunction][2];
+    btn1.onclick = location[buttonFunction][0];
+    btn2.onclick = location[buttonFunction][1];
+    btn3.onclick = location[buttonFunction][2];
 
     //Update Description
-    description.innerHTML = currentLocation.description;
-}
+    description.innerHTML = location.description;
+}*/
