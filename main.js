@@ -3,6 +3,7 @@ let xp = 0;
 let energy = 150;
 let gold = 100;
 let gemstoneUnlocked = false;
+let metal = 0;
 
 const btn1 = document.getElementById("btn1");
 const btn2 = document.getElementById("btn2");
@@ -31,7 +32,7 @@ const locations = [
         //buttonFunction: [goPlanets, upgradeShip, goSpaceport],
         description: "You have returned to your spaceship. What would you like to do?"
     }, {
-        name: "Spaceport",
+        name: "Upgrade",
         gold: 0,
         xpReward: 0,
         hasGemstone: 0,
@@ -129,21 +130,40 @@ const locations = [
 ]
 
 function goPlanets() {
-    console.log("Hello World");
-    btn1.innerText = "Explore Planets";
-    btn2.innerText = "Upgrade Spaceship";
-    btn3.innerText = "Visit Spaceport";
+    //Add if/else later to change planets based on the player's XP level.
+    btn1.innerText = locations[2].name;
+    btn2.innerText = locations[3].name;
+    btn3.innerText = locations[4].name;
+    btn1.onclick = planetAlpha;
+    btn2.onclick = planetBeta;
+    btn3.onclick = planetGamma;
 }
 
 function upgradeShip() {
-    console.log("Hello World");
-    btn1.innerText = "Testing Purposes";
-    btn2.innerText = "Testing Purposes";
-    btn3.innerText = "Testing Purposes";
+    btn1.innerText = locations[1].buttonText[0];
+    btn2.innerText = locations[1].buttonText[1];
+    btn3.innerText = locations[1].buttonText[2];
+    //btn1.onclick = locations[1].buttonFunction[0];
+    //btn2.onclick = locations[1].buttonFunction[1];
+    //btn3.onclick = locations[1].buttonFunction[2];
 }
 
 function goSpaceport() {
-    console.log("Testing purposes 3")
+    
+}
+
+//Add functions for Planets later
+
+function planetAlpha() {
+
+}
+
+function planetBeta() {
+
+}
+
+function planetGamma() {
+
 }
 
 function updateStats() {
@@ -152,7 +172,7 @@ function updateStats() {
     xpText.innerText = `Energy: ${energy}`;
 }
 
-/*function update(location) {
+function update(location) {
     //const currentLocation = locations[locationIndex];
 
     //Update Button Text
@@ -167,4 +187,4 @@ function updateStats() {
 
     //Update Description
     description.innerHTML = location.description;
-}*/
+}
