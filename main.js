@@ -137,8 +137,37 @@ function goPlanets() {
     btn1.onclick = planetAlpha;
     btn2.onclick = planetBeta;
     btn3.onclick = planetGamma;
+
+    description.innerText = "Your resources are limited and your spaceship can only reach the planets closest to Earth. You see a few planets far on the horizon. The closer you get to them, the darker the atmosphere becomes. What would you like to do?"
+
+    //Create a return button for this screen
+    let returnBtn = document.createElement("button");
+    returnBtn.innerText = "Return";
+    returnBtn.id = "return-btn";
+    returnBtn.onclick = goSpaceship;
+
+    //Append to other buttons
+    const buttons = document.getElementById("buttons");
+    buttons.appendChild(returnBtn);
 }
 
+function goSpaceship() {
+    const returnBtn = document.getElementById('return-btn');
+    if (returnBtn) {
+        returnBtn.remove();
+    }
+
+    btn1.innerText = locations[0].buttonText[0];
+    btn2.innerText = locations[0].buttonText[1];
+    btn3.innerText = locations[0].buttonText[2];
+    btn1.onclick = goPlanets;
+    btn2.onclick = upgradeShip;
+    btn3.onclick = goSpaceport;
+
+    description.innerText = locations[0].description;
+}
+
+//Clicking Buy Upgrades goes to Planets. Why?
 function upgradeShip() {
     btn1.innerText = locations[1].buttonText[0];
     btn2.innerText = locations[1].buttonText[1];
@@ -186,5 +215,6 @@ function update(location) {
     btn3.onclick = location[buttonFunction][2];
 
     //Update Description
-    description.innerHTML = location.description;
+    //Commenting this out makes innerText in goPlanets work. Why?
+    //description.innerHTML = location.description;
 }
