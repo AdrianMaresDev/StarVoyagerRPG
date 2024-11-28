@@ -3,7 +3,7 @@ let xp = 0;
 let energy = 150;
 let gold = 100;
 let gemstoneUnlocked = false;
-let metal = 0;
+let metal = 50;
 
 const btn1 = document.getElementById("btn1");
 const btn2 = document.getElementById("btn2");
@@ -12,6 +12,7 @@ const description = document.querySelector("#description");
 const energyText = document.getElementById("energyText");
 const goldText = document.getElementById("goldText");
 const xpText = document.getElementById("xpText");
+const metalText = document.getElementById("metalText");
 
 //Initialize Buttons
 btn1.onclick = goPlanets;
@@ -50,6 +51,7 @@ const locations = [
         hasGemstone: 0,
         energyCost: 10,
         xpRequirement: 0,
+        searched: false,
         description: "You come across a barren planet covered in rust-colored rocks and dust. It's incredibly quiet here and the atmosphere is oddly still. What would you like to do?"
     }, {
         name: "Planet Beta",
@@ -59,6 +61,7 @@ const locations = [
         hasGemstone: 0,
         energyCost: 10,
         xpRequirement: 0,
+        searched: false,
         description: "You come across a blue planet that vaguely resembles your home, Earth. There's no water here, but an unknown liquid seeps into the dirt. What would you like to do?"
     }, {
         name: "Planet Gamma",
@@ -68,6 +71,7 @@ const locations = [
         hasGemstone: 0,
         energyCost: 10,
         xpRequirement: 0,
+        searched: false,
         description: "You come across a planet covered in glistening ice. The snow-capped mountains looming in the distance are breathtaking, but too dangerous to navigate. What would you like to do?"
     }, {
         //second set
@@ -78,6 +82,7 @@ const locations = [
         hasGemstone: 3, //30% chance of gemstone appearing
         energyCost: 30,
         xpRequirement: 100,
+        searched: false,
         description: "You come across a vibrant green planet, but the plant life isn't something you've ever seen before. You notice bioluminescent flora that lights up wherever you step. What would you like to do?"
     }, {
         //second set
@@ -88,6 +93,7 @@ const locations = [
         hasGemstone: 3,
         energyCost: 30,
         xpRequirement: 100,
+        searched: false,
         description: "You come across a metallic planet gleaming from rare minerals. The surface is dotted with bits of gold shining through, reminiscent of the stars above. What would you like to do?"
     }, {
         name: "Planet Omega",
@@ -97,6 +103,7 @@ const locations = [
         hasGemstone: 3,
         energyCost: 30,
         xpRequirement: 100,
+        searched: false,
         description: "You come across a planet containing the remnants of a civilization long gone. The ancient buildings are in ruin, making you wonder what happened here. What would you like to do?"
     }, {
         //final planet set - highest chance of gemstone
@@ -107,6 +114,7 @@ const locations = [
         hasGemstone: 5,
         energyCost: 50,
         xpRequirement: 200,
+        searched: false,
         description: "You come across a planet veiled with a humid layer of fog. A thick mass of clouds swirls overhead, and it seems like a storm is coming soon. What would you like to do?"
     }, {
         name: "Planet Echo",
@@ -116,6 +124,7 @@ const locations = [
         hasGemstone: 5,
         energyCost: 50,
         xpRequirement: 200,
+        searched: false,
         description: "You come across a planet burning with red lava seeping from a volcano in the distance. The air is heavy with ash and smoke. What would you like to do?"
     }, {
         name: "Planet Nova",
@@ -125,9 +134,17 @@ const locations = [
         hasGemstone: 5,
         energyCost: 50,
         xpRequirement: 200,
+        searched: false,
         description: "You come across a lush planet filled with exotic creatures. The air is fragrant with blooming flowers and you see something watching you from within them. What would you like to do?"
     }
 ]
+
+function updateStats() {
+    energyText.innerText = `${energy}`;
+    goldText.innerText = `${gold}`;
+    xpText.innerText = `${energy}`;
+    metalText.innerText = `${metal}`
+}
 
 function goPlanets() {
     //Add if/else later to change planets based on the player's XP level.
@@ -181,28 +198,66 @@ function goSpaceport() {
     
 }
 
+//Generic buttons for all Planets
+function planetActions(planetIndex) {
+    const returnBtn = document.getElementById('return-btn');
+    if (returnBtn) {
+        returnBtn.remove();
+    }
+
+    const planet = locations[planetIndex];
+
+    description.innerText = planet.description;
+
+    btn1.innerText = "Search";
+    btn2.innerText = "Gather Resources";
+    btn3.innerText = "Return to Ship";
+
+    btn1.onclick = () => searchPlanet(planetIndex);
+    btn2.onclick = () => gatherResources(planetIndex);
+    btn3.onclick = goSpaceship;
+}
+
+function searchPlanet(planetIndex) {
+    const planet = locations[planetIndex];
+
+    //Check if the player has already searched the planet
+    if (planet.searched) {
+        description.innerText = "You've already searched this planet! There's nothing left here to find. What would you like to do?";
+        return;
+    }
+
+    if (energy >= planet.energyCost) {
+        xp += planet.xpReward;
+        gold += planet.gold;
+        metal += planet.metal;
+        energy -= planet.energyCost;
+
+        planet.searched = true;
+
+        description.innerText = "You explore the planet and find some valuable resources. What else would you like to do?"
+
+        updateStats();
+    } else {
+        description.innerText = "You don't have enough energy to explore right now. Go back to your spaceship and rest."
+    }
+}
+
 //Add functions for Planets later
 
 function planetAlpha() {
-
+    planetActions(2);
 }
 
 function planetBeta() {
-
+    planetActions(3);
 }
 
 function planetGamma() {
-
-}
-
-function updateStats() {
-    energyText.innerText = `Energy: ${energy}`;
-    goldText.innerText = `Gold: ${gold}`;
-    xpText.innerText = `Energy: ${energy}`;
+    planetActions(4);
 }
 
 function update(location) {
-    //const currentLocation = locations[locationIndex];
 
     //Update Button Text
     btn1.innerText = location[buttonText][0];
@@ -213,8 +268,4 @@ function update(location) {
     btn1.onclick = location[buttonFunction][0];
     btn2.onclick = location[buttonFunction][1];
     btn3.onclick = location[buttonFunction][2];
-
-    //Update Description
-    //Commenting this out makes innerText in goPlanets work. Why?
-    //description.innerHTML = location.description;
 }

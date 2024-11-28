@@ -64,7 +64,7 @@ button {
     margin-right: 1rem;
 }
 
-#energyText, #goldText, #xpText {
+#energyText, #goldText, #xpText, #metalText {
     font-weight: bold;
 }
 
