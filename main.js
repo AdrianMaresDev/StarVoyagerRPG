@@ -51,7 +51,7 @@ const locations = [
         hasGemstone: 0,
         energyCost: 10,
         xpRequirement: 0,
-        searched: false,
+        searchedAt: null,
         description: "You come across a barren planet covered in rust-colored rocks and dust. It's incredibly quiet here and the atmosphere is oddly still. What would you like to do?"
     }, {
         name: "Planet Beta",
@@ -61,7 +61,7 @@ const locations = [
         hasGemstone: 0,
         energyCost: 10,
         xpRequirement: 0,
-        searched: false,
+        searchedAt: null,
         description: "You come across a blue planet that vaguely resembles your home, Earth. There's no water here, but an unknown liquid seeps into the dirt. What would you like to do?"
     }, {
         name: "Planet Gamma",
@@ -71,7 +71,7 @@ const locations = [
         hasGemstone: 0,
         energyCost: 10,
         xpRequirement: 0,
-        searched: false,
+        searchedAt: null,
         description: "You come across a planet covered in glistening ice. The snow-capped mountains looming in the distance are breathtaking, but too dangerous to navigate. What would you like to do?"
     }, {
         //second set
@@ -82,7 +82,7 @@ const locations = [
         hasGemstone: 3, //30% chance of gemstone appearing
         energyCost: 30,
         xpRequirement: 100,
-        searched: false,
+        searchedAt: null,
         description: "You come across a vibrant green planet, but the plant life isn't something you've ever seen before. You notice bioluminescent flora that lights up wherever you step. What would you like to do?"
     }, {
         //second set
@@ -93,7 +93,7 @@ const locations = [
         hasGemstone: 3,
         energyCost: 30,
         xpRequirement: 100,
-        searched: false,
+        searchedAt: null,
         description: "You come across a metallic planet gleaming from rare minerals. The surface is dotted with bits of gold shining through, reminiscent of the stars above. What would you like to do?"
     }, {
         name: "Planet Omega",
@@ -103,7 +103,7 @@ const locations = [
         hasGemstone: 3,
         energyCost: 30,
         xpRequirement: 100,
-        searched: false,
+        searchedAt: null,
         description: "You come across a planet containing the remnants of a civilization long gone. The ancient buildings are in ruin, making you wonder what happened here. What would you like to do?"
     }, {
         //final planet set - highest chance of gemstone
@@ -114,7 +114,7 @@ const locations = [
         hasGemstone: 5,
         energyCost: 50,
         xpRequirement: 200,
-        searched: false,
+        searchedAt: null,
         description: "You come across a planet veiled with a humid layer of fog. A thick mass of clouds swirls overhead, and it seems like a storm is coming soon. What would you like to do?"
     }, {
         name: "Planet Echo",
@@ -124,7 +124,7 @@ const locations = [
         hasGemstone: 5,
         energyCost: 50,
         xpRequirement: 200,
-        searched: false,
+        searchedAt: null,
         description: "You come across a planet burning with red lava seeping from a volcano in the distance. The air is heavy with ash and smoke. What would you like to do?"
     }, {
         name: "Planet Nova",
@@ -134,7 +134,7 @@ const locations = [
         hasGemstone: 5,
         energyCost: 50,
         xpRequirement: 200,
-        searched: false,
+        searchedAt: null,
         description: "You come across a lush planet filled with exotic creatures. The air is fragrant with blooming flowers and you see something watching you from within them. What would you like to do?"
     }
 ]
@@ -210,20 +210,21 @@ function planetActions(planetIndex) {
     description.innerText = planet.description;
 
     btn1.innerText = "Search";
-    btn2.innerText = "Gather Resources";
+    btn2.innerText = "Find Gemstone";
     btn3.innerText = "Return to Ship";
 
     btn1.onclick = () => searchPlanet(planetIndex);
-    btn2.onclick = () => gatherResources(planetIndex);
+    btn2.onclick = () => findGemstone(planetIndex);
     btn3.onclick = goSpaceship;
 }
 
 function searchPlanet(planetIndex) {
     const planet = locations[planetIndex];
+    const currentTime = Date.now();
 
     //Check if the player has already searched the planet
-    if (planet.searched) {
-        description.innerText = "You've already searched this planet! There's nothing left here to find. What would you like to do?";
+    if (planet.searchedAt && currentTime - planet.searchedAt < 60000) {
+        description.innerText = "You've already searched this planet! There's nothing left here to find. Come back later to check if you've missed something. What would you like to do?";
         return;
     }
 
@@ -233,7 +234,7 @@ function searchPlanet(planetIndex) {
         metal += planet.metal;
         energy -= planet.energyCost;
 
-        planet.searched = true;
+        planet.searchedAt = currentTime;
 
         description.innerText = "You explore the planet and find some valuable resources. What else would you like to do?"
 
